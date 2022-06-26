@@ -3,34 +3,40 @@ import React, { useState } from 'react'
 import './ExpenseForm.css'
 
 const ExpenseForm = () => {
-    const [enteredtext, setEnteredText] = useState(" ")
-    const [enteredAmount, setEnteredAmount] = useState(" ")
-    const [enteredDate, setEntereddate] = useState(" ")
+    const [enteredtext, setEnteredText] = useState('')
+    const [enteredAmount, setEnteredAmount] = useState('')
+    const [enteredDate, setEntereddate] = useState('')
 
     const changeTextHandler = (event) => {
         setEnteredText(event.target.value)
-        console.log(event.target.value)
     }
 
     const changeAmountHandler = (event) => {
         setEnteredAmount(event.target.value)
-        console.log(event.target.value)
     }
 
     const changeDateHandler = (event) => {
         setEntereddate(event.target.value)
-        console.log(event.target.value)
+    }
+
+    const getInputValue = (event) => {
+        event.preventDefault()
+        const inputData = {
+            Title: enteredtext,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        }
+        console.log(inputData)
     }
 
     return (
-        <form>
+        <form onSubmit={getInputValue}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
                     <input onChange={changeTextHandler}
                         type='text'
                         required>
-
                     </input>
                 </div>
                 <div className='new-expense__control'>

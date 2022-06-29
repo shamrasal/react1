@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './NewExpense.css'
-
 import ExpenseForm from './ExpenseForm.js'
 
 const NewExpense = (props) => {
@@ -18,12 +17,10 @@ const NewExpense = (props) => {
     const startEditingHandler = () => {
         setIsEditing(true)
     }
-    
+
     const cancelClickHandler = () => {
         setIsEditing(false)
     }
-
-
     return (
         <div className='new-expense'>
             {!isEditing && <button onClick={startEditingHandler}>Add new Expense</button>}
